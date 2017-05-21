@@ -33,6 +33,19 @@ body {
 .warning {
     color: red;
 }
+
+#weather #current {
+	margin-top: 20px;
+}
+
 #weather #current img {
 	width: 100px;
+}
+
+#weather #soon {
+	margin-top: 20px;
+}
+
+#weather #tomorrow {
+	margin-top: 20px;
 }

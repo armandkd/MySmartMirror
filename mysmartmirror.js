@@ -64,7 +64,50 @@ class Tan extends Module {
 			});
 	}
 
-<<<<<<< HEAD
+		//fonction pour récupérer les deux premiers horaires du C1
+	getC1(all) {
+		var i=-1;
+		var j=0;
+		var tabIndHoraires = [1000,1000];
+		while(i<1 && all[j] !== undefined) {
+			if (all[j].ligne.numLigne == "C1") {
+				i+=1;
+				tabIndHoraires[i]=j;
+			}
+			j+=1;
+		}
+		return tabIndHoraires;
+	}
+
+	//fonction de vérification des données et d'affichage des horaires
+	checkTanTime(timeJSON, tan, tabInd) {
+	   
+		var horaires = "";
+		if (timeJSON[tabInd[0]] === undefined) {
+			horaires += "PLUS DE BUS";
+			console.log("plusdebus");
+		}
+		else {
+			if (timeJSON[tabInd[0]].temps == "Proche" || timeJSON[tabInd[0]].temps == "horaire.proche") {
+				horaires += "<span class='warning'>PROCHE</span>";
+				console.log("temps1proche");
+			} else {
+				horaires += timeJSON[tabInd[0]].temps;
+				console.log("temps1");
+			}
+			horaires += "<br>";
+			if (timeJSON[tabInd[1]] === undefined) {
+				horaires += "<span class='warning'>DERNIER BUS</span>"
+				console.log("temps2undefined");
+			} else {
+				horaires += timeJSON[tabInd[1]].temps;
+				console.log("temps2");
+			}
+		}
+		tan.div.html(horaires);
+	}
+}
+
 class Weather extends Module {
 	constructor(div) {
 		console.log("Initiating weather");
@@ -136,49 +179,6 @@ class Weather extends Module {
 			.fail(function () {
 				console.log("Forecast weather request fail");
 			});
-=======
-	//fonction pour récupérer les deux premiers horaires du C1
-	getC1(all) {
-		var i=-1;
-		var j=0;
-		var tabIndHoraires = [1000,1000];
-		while(i<1 && all[j] !== undefined) {
-			if (all[j].ligne.numLigne == "C1") {
-				i+=1;
-				tabIndHoraires[i]=j;
-			}
-			j+=1;
-		}
-		return tabIndHoraires;
-	}
-
-	//fonction de vérification des données et d'affichage des horaires
-	checkTanTime(timeJSON, tan, tabInd) {
-	   
-		var horaires = "";
-		if (timeJSON[tabInd[0]] === undefined) {
-			horaires += "PLUS DE BUS";
-			console.log("plusdebus");
-		}
-		else {
-			if (timeJSON[tabInd[0]].temps == "Proche" || timeJSON[tabInd[0]].temps == "horaire.proche") {
-				horaires += "<span class='warning'>PROCHE</span>";
-				console.log("temps1proche");
-			} else {
-				horaires += timeJSON[tabInd[0]].temps;
-				console.log("temps1");
-			}
-			horaires += "<br>";
-			if (timeJSON[tabInd[1]] === undefined) {
-				horaires += "<span class='warning'>DERNIER BUS</span>"
-				console.log("temps2undefined");
-			} else {
-				horaires += timeJSON[tabInd[1]].temps;
-				console.log("temps2");
-			}
-		}
-		tan.div.html(horaires);
->>>>>>> 54c222f38be6766300705496e84c29e02624aad9
 	}
 }
 
