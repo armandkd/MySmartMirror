@@ -2,20 +2,24 @@ body {
 	background: black;
 	color: white;
 	font-family: 'Roboto', sans-serif;
+	cursor: none;
 }
 
 #time {
 	float: left;
+	text-align: center;
 }
 
 #clock {
 	font-weight: normal;
 	font-size: 100pt;
-	text-align: center;
 }
 
 #date {
 	font-weight: lighter;
 	font-size: 25pt;
-	text-align: center;
+}
+
+#weather #current img {
+	width: 100px;
 }
