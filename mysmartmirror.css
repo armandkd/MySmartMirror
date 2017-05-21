@@ -34,8 +34,15 @@ body {
     color: red;
 }
 
+#weather {
+    display: flex;
+    flex-direction: row;
+    bottom:0;
+}
+
 #weather #current {
 	margin-top: 20px;
+    padding: 20px;
 }
 
 #weather #current img {
@@ -44,7 +51,10 @@ body {
 
 #weather #soon {
 	margin-top: 20px;
+    padding: 20px;
 }
 
 #weather #tomorrow {
 	margin-top: 20px;
+    padding: 20px;
+}
