@@ -39,7 +39,7 @@ class Tan extends Module {
 		console.log("Initiating Tan");
 		super(div);
 		this.getTanTime();
-		setInterval(this.getTanTime.bind(this), 30000);
+		setInterval(this.getTanTime.bind(this), 10000);
 	}
 
 	getTanTime() {
@@ -51,9 +51,10 @@ class Tan extends Module {
 		})
 			.done(function (TIME) {
 				console.log("second success");
-				//affichage du texte
-				tan.div.html(TIME[0].temps + "<br>" + TIME[1].temps);
-				//tan.div.text();
+				var tab = tan.getC1(TIME);
+				console.log(tab[0]);
+				console.log(tab[1]);
+				tan.checkTanTime(TIME, tan, tab);
 			})
 			.fail(function () {
 				console.log("error");
@@ -62,9 +63,50 @@ class Tan extends Module {
 				console.log("complete");
 			});
 	}
+
+	//fonction pour récupérer les deux premiers horaires du C1
+	getC1(all) {
+		var i=-1;
+		var j=0;
+		var tabIndHoraires = [1000,1000];
+		while(i<1 && all[j] !== undefined) {
+			if (all[j].ligne.numLigne == "C1") {
+				i+=1;
+				tabIndHoraires[i]=j;
+			}
+			j+=1;
+		}
+		return tabIndHoraires;
+	}
+
+	//fonction de vérification des données et d'affichage des horaires
+	checkTanTime(timeJSON, tan, tabInd) {
+	   
+		var horaires = "";
+		if (timeJSON[tabInd[0]] === undefined) {
+			horaires += "PLUS DE BUS";
+			console.log("plusdebus");
+		}
+		else {
+			if (timeJSON[tabInd[0]].temps == "Proche" || timeJSON[tabInd[0]].temps == "horaire.proche") {
+				horaires += "<span class='warning'>PROCHE</span>";
+				console.log("temps1proche");
+			} else {
+				horaires += timeJSON[tabInd[0]].temps;
+				console.log("temps1");
+			}
+			horaires += "<br>";
+			if (timeJSON[tabInd[1]] === undefined) {
+				horaires += "<span class='warning'>DERNIER BUS</span>"
+				console.log("temps2undefined");
+			} else {
+				horaires += timeJSON[tabInd[1]].temps;
+				console.log("temps2");
+			}
+		}
+		tan.div.html(horaires);
+	}
 }
-
-
 
 function init() {
 	console.log("Document loaded, initiating modules...");

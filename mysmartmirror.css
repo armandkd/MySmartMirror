@@ -19,3 +19,7 @@ body {
 	font-size: 25pt;
 	text-align: center;
 }
+
+.warning {
+    color: red;
+}
