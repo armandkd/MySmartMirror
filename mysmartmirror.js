@@ -64,7 +64,7 @@ class Tan extends Module {
 			});
 	}
 
-		//fonction pour récupérer les deux premiers horaires du C1
+	//fonction pour récupérer les deux premiers horaires du C1
 	getC1(all) {
 		var i=-1;
 		var j=0;
