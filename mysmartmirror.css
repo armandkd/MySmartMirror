@@ -2,6 +2,9 @@ body {
 	background: black;
 	color: white;
 	font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
 }
 
 #time {
@@ -18,6 +21,13 @@ body {
 	font-weight: lighter;
 	font-size: 25pt;
 	text-align: center;
+}
+
+#tan {
+    font-weight: 300;
+    font-size: 25pt;
+    text-align: right;
+    padding-top: 50px;
 }
 
 .warning {
