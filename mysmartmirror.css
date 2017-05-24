@@ -1,0 +1,60 @@
+body {
+	background: black;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	cursor: none;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+#time {
+	float: left;
+	text-align: center;
+}
+
+#clock {
+	font-weight: normal;
+	font-size: 100pt;
+}
+
+#date {
+	font-weight: lighter;
+	font-size: 25pt;
+}
+
+#tan {
+    font-weight: 300;
+    font-size: 25pt;
+    text-align: right;
+    padding-top: 50px;
+}
+
+.warning {
+    color: red;
+}
+
+#weather {
+    display: flex;
+    flex-direction: row;
+    bottom:0;
+}
+
+#weather #current {
+	margin-top: 20px;
+    padding: 20px;
+}
+
+#weather #current img {
+	width: 100px;
+}
+
+#weather #soon {
+	margin-top: 20px;
+    padding: 20px;
+}
+
+#weather #tomorrow {
+	margin-top: 20px;
+    padding: 20px;
+}
